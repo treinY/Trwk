@@ -1,0 +1,130 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#121212">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TR.Project - Login</title>
+  <style>
+    /* Basic reset and styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0d0d0d;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 30px;
+      background-color: #1a1a1a;
+      border-radius: 10px;
+    }
+    .title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #00ffff;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #333;
+      color: #fff;
+    }
+    input:focus {
+      outline: none;
+      background-color: #444;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #00cccc;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #00aaaa;
+    }
+    .error {
+      color: #ff4444;
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">TR.Project</div>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required />
+      </div>
+      <button type="submit" class="btn">Enter</button>
+      <div id="errorMessage" class="error"></div>
+    </form>
+  </div>
+  <script>
+  // Service Worker Registration
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js')
+        .then(registration => {
+          console.log('Service Worker registered');
+        })
+        .catch(err => {
+          console.log('Registration failed: ', err);
+        });
+    });
+  }
+    // Handle login form submission
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const errorDiv = document.getElementById("errorMessage");
+
+      if (username === "Thurein WK" && password === "138152093") {
+        // Set authentication flag in localStorage
+        localStorage.setItem("authenticated", "true");
+        // Redirect to Page 2
+        window.location.href = "page2.html";
+      } else {
+        errorDiv.textContent = "Invalid username or password.";
+      }
+    });
+  </script>
+</body>
+</html>

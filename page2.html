@@ -1,0 +1,131 @@
+<!-- page2.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TR.Project - File Manager</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #1e1e1e;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00ffff;
+    }
+    main {
+      padding: 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    #uploadArea {
+      border: 2px dashed #555;
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      border-radius: 10px;
+    }
+    #uploadArea.dragover {
+      background-color: #222;
+      border-color: #00ffff;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    .file-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .file-item {
+      background: #1e1e1e;
+      padding: 1rem;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 200px;
+    }
+    .file-item video,
+    .file-item img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    .file-actions {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    button {
+      background-color: #00cccc;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #009999;
+    }
+    .progress {
+      height: 5px;
+      background: #00cccc;
+      margin-top: 10px;
+      transition: width 0.3s;
+    }
+    @media (max-width: 600px) {
+      .file-item {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>TR.Project</header>
+  <main>
+    <div id="uploadArea">
+      <p>Drag & drop files here or <label style="color:#00ffff; cursor:pointer;"><input type="file" id="fileInput" multiple>browse</label></p>
+    </div>
+    <div class="file-list" id="fileList"></div>
+  </main>
+  <script>
+    // Redirect if not authenticated
+    if (localStorage.getItem("authenticated") !== "true") {
+      alert("Access denied. Please login first.");
+      window.location.href = "index.html";
+    }
+
+    const fileInput = document.getElementById('fileInput');
+    const uploadArea = document.getElementById('uploadArea');
+    const fileList = document.getElementById('fileList');
+    let storedFiles = JSON.parse(localStorage.getItem('uploadedFiles') || '[]');
+
+    function renderFiles() {
+      fileList.innerHTML = '';
+      storedFiles.forEach((file, index) => {
+        const div = document.createElement('div');
+        div.className = 'file-item';
+        const mime = file.type;
+        if (mime.startsWith('image/')) {
+          div.innerHTML = `<img src="${file.data}" alt="Image">`;
+        } else if (mime.startsWith('video/')) {
+          div.innerHTML = `<video src="${file.data}" controls></video>`;
+        } else {
+          div.innerHTML = `<p>${file.name}</p>`;
+        }
+
+        const actions = document.createElement('div');
+        actions.className = 'file-actions';
+
+        const downloadBtn = document.createElement('button');
+        downloadBtn.textContent = 'Download';
+        downloadBtn.onclick = () => {
+          const a =
+::contentReference[oaicite:104]{index=104}
+ 
